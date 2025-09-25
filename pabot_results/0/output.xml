@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-09-24T16:57:58.467510" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="D:\Udmey\Python-Workspace\RobotFrameworkTutorial\RobotFrameworkSeleniumPython\Tests">
+<suite id="s1-s1" name="E2ELeadOpportunityTest" source="D:\Udmey\Python-Workspace\RobotFrameworkTutorial\RobotFrameworkSeleniumPython\Tests\E2ELeadOpportunityTest.robot">
+<test id="s1-s1-t1" name="E2E Lead To Opportunity Flow" line="10">
+<kw name="Run Keywords" owner="BuiltIn" type="SETUP">
+<kw name="Open SF Login Page" owner="Common">
+<kw name="Open Browser With Options" owner="BrowserUtilLibrary">
+<msg time="2025-09-24T16:58:06.569520" level="INFO">Opening url 'https://orgfarm-6e06e8de9e-dev-ed.develop.my.salesforce.com/'</msg>
+<arg>${Browser}</arg>
+<arg>${headless}</arg>
+<arg>${envname}</arg>
+<arg>${islambda}</arg>
+<status status="PASS" start="2025-09-24T16:58:02.421991" elapsed="6.818376"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="BrowserUtilLibrary">
+<arg>20s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-24T16:58:09.242477" elapsed="0.044133"/>
+</kw>
+<kw name="Set Selenium Page Load Timeout" owner="BrowserUtilLibrary">
+<arg>20s</arg>
+<doc>Sets the page load timeout value used by Selenium.</doc>
+<status status="PASS" start="2025-09-24T16:58:09.287142" elapsed="0.215974"/>
+</kw>
+<status status="PASS" start="2025-09-24T16:58:02.421402" elapsed="7.082234"/>
+</kw>
+<kw name="Setup Lead E2E Test Data" owner="Common">
+<kw name="Get Data From Json" owner="CommonUtilLibrary">
+<msg time="2025-09-24T16:58:09.505750" level="INFO">${listuser} = {'username': 'pgbitbucket706@agentforce.com', 'password': 'Pra2892pte#'}</msg>
+<var>${listuser}</var>
+<arg>loginTestData.json</arg>
+<arg>valid_login</arg>
+<status status="PASS" start="2025-09-24T16:58:09.504850" elapsed="0.000998"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-09-24T16:58:09.509714" level="INFO">${validusername} = pgbitbucket706@agentforce.com</msg>
+<arg>${validusername}</arg>
+<arg>${listuser["username"]}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-09-24T16:58:09.508054" elapsed="0.001912"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-09-24T16:58:09.513617" level="INFO">${validpassword} = Pra2892pte#</msg>
+<arg>${validpassword}</arg>
+<arg>${listuser["password"]}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-09-24T16:58:09.512286" elapsed="0.001487"/>
+</kw>
+<kw name="Get Data From Json" owner="CommonUtilLibrary">
+<msg time="2025-09-24T16:58:09.516758" level="INFO">${leadrecorddata} = {'firstname': 'TestAutomation', 'lastname': 'Lead01', 'company': 'ABC Solutions', 'email': 'testautomation001@mailinator.com'}</msg>
+<var>${leadrecorddata}</var>
+<arg>leadOpportunityTestData.json</arg>
+<arg>leadData</arg>
+<status status="PASS" start="2025-09-24T16:58:09.515701" elapsed="0.001212"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-09-24T16:58:09.519825" level="INFO">${leadrecorddata} = {'firstname': 'TestAutomation', 'lastname': 'Lead01', 'company': 'ABC Solutions', 'email': 'testautomation001@mailinator.com'}</msg>
+<arg>${leadrecorddata}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-09-24T16:58:09.519390" elapsed="0.000529"/>
+</kw>
+<doc>This Keyword is used to setup Lead e2e testdata</doc>
+<status status="PASS" start="2025-09-24T16:58:09.504227" elapsed="0.017202"/>
+</kw>
+<arg>Open SF Login Page</arg>
+<arg>Setup Lead E2E Test Data</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="PASS" start="2025-09-24T16:58:02.419874" elapsed="7.101942"/>
+</kw>
+<kw name="Login To Salesforce" owner="LoginPage">
+<msg time="2025-09-24T16:58:10.168666" level="INFO">Typing text 'pgbitbucket706@agentforce.com' into text field 'id=username'.</msg>
+<msg time="2025-09-24T16:58:13.971448" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-09-24T16:58:14.890405" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2025-09-24T16:58:17.854294" level="INFO">Clicking button 'id=Login'.</msg>
+<arg>username=${validusername}</arg>
+<arg>password=${validpassword}</arg>
+<status status="PASS" start="2025-09-24T16:58:09.522287" elapsed="20.088032"/>
+</kw>
+<kw name="Validate App Launcher Icon" owner="LoginPage">
+<msg time="2025-09-24T16:58:31.756062" level="INFO">Current page contains element 'xpath://button[@title='App Launcher']'.</msg>
+<status status="PASS" start="2025-09-24T16:58:29.612333" elapsed="2.143898"/>
+</kw>
+<kw name="Go To Leads App" owner="Common">
+<kw name="Navigate To Leads App" owner="LeadsPage">
+<msg time="2025-09-24T16:58:31.759498" level="INFO">Opening url 'https://orgfarm-6e06e8de9e-dev-ed.develop.lightning.force.com/lightning/o/Lead/list?filterName=__Recent'</msg>
+<arg>${envname}</arg>
+<status status="PASS" start="2025-09-24T16:58:31.758666" elapsed="5.587558"/>
+</kw>
+<status status="PASS" start="2025-09-24T16:58:31.757968" elapsed="5.590349"/>
+</kw>
+<kw name="Create New Lead Record" owner="LeadsPage">
+<msg time="2025-09-24T16:58:37.349662" level="INFO">Clicking element 'xpath://li[@data-target-selection-name='sfdc:StandardButton.Lead.New']'.</msg>
+<msg time="2025-09-24T16:58:41.992623" level="INFO">Clicking element 'xpath://button[@aria-label='Salutation']'.</msg>
+<msg time="2025-09-24T16:58:42.428415" level="INFO">Typing text 'TestAutomation' into text field 'xpath://input[@name='firstName']'.</msg>
+<msg time="2025-09-24T16:58:42.742963" level="INFO">Typing text 'Noqcmt' into text field 'xpath://input[@name='lastName']'.</msg>
+<msg time="2025-09-24T16:58:42.908319" level="INFO">Typing text 'ABC SolutionsuvoWxX' into text field 'xpath://input[@name='Company']'.</msg>
+<msg time="2025-09-24T16:58:43.132577" level="INFO">Typing text 'testautomationNoqcmt@mailinator.com' into text field 'xpath://input[@name='Email']'.</msg>
+<msg time="2025-09-24T16:58:43.438679" level="INFO">Clicking element 'xpath://button[@name='SaveEdit']'.</msg>
+<msg time="2025-09-24T16:58:43.565963" level="INFO">${contactlastname} = Noqcmt</msg>
+<var>${contactlastname}</var>
+<arg>${leadrecorddata}</arg>
+<status status="PASS" start="2025-09-24T16:58:37.348778" elapsed="6.217252"/>
+</kw>
+<kw name="Validate Lead Status Should Be" owner="LeadsPage">
+<msg time="2025-09-24T16:58:46.936793" level="INFO">Element 'xpath://a[@data-tab-name='Open - Not Contacted']' attribute 'aria-selected' contains value 'true'.</msg>
+<arg>Open - Not Contacted</arg>
+<status status="PASS" start="2025-09-24T16:58:43.567635" elapsed="3.369298"/>
+</kw>
+<kw name="Convert Lead" owner="LeadsPage">
+<msg time="2025-09-24T16:58:46.960794" level="INFO">Simulating Mouse Over on element 'xpath://a[@aria-selected='false']//span[@class='title slds-path__title'][normalize-space()='Converted']'.</msg>
+<msg time="2025-09-24T16:58:47.242308" level="INFO">Sending key(s) ('ENTER',) to xpath://li[@data-name='converted']/a[@aria-selected='false'] element.</msg>
+<msg time="2025-09-24T16:58:47.555053" level="INFO">Pressing special key ENTER to element.</msg>
+<msg time="2025-09-24T16:58:47.555197" level="INFO">Releasing special key ENTER.</msg>
+<msg time="2025-09-24T16:58:47.601217" level="INFO">Sending key(s) ('ENTER',) to xpath://button[.='Select Converted Status'] element.</msg>
+<msg time="2025-09-24T16:58:47.927846" level="INFO">Pressing special key ENTER to element.</msg>
+<msg time="2025-09-24T16:58:47.927948" level="INFO">Releasing special key ENTER.</msg>
+<msg time="2025-09-24T16:58:49.025150" level="INFO">Simulating Mouse Over on element 'xpath://button[.='Convert']'.</msg>
+<msg time="2025-09-24T16:58:49.349667" level="INFO">Sending key(s) ('ENTER',) to xpath://button[.='Convert'] element.</msg>
+<msg time="2025-09-24T16:58:49.740622" level="INFO">Pressing special key ENTER to element.</msg>
+<msg time="2025-09-24T16:58:49.741193" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" start="2025-09-24T16:58:46.938337" elapsed="4.476964"/>
+</kw>
+<kw name="Validate Created Contact Record" owner="LeadsPage">
+<msg time="2025-09-24T16:58:51.420124" level="INFO">Simulating Mouse Over on element 'xpath://button[.='Go to Leads']'.</msg>
+<msg time="2025-09-24T16:58:51.848151" level="INFO">Clicking element 'xpath://button[.='Go to Leads']'.</msg>
+<arg>${contactlastname}</arg>
+<status status="PASS" start="2025-09-24T16:58:51.419713" elapsed="3.080638"/>
+</kw>
+<kw name="Navigate To Contact After Lead Conversion" owner="LeadsPage">
+<msg time="2025-09-24T16:58:54.503971" level="INFO">Opening url 'https://orgfarm-6e06e8de9e-dev-ed.develop.lightning.force.com/lightning/r/Contact/003gK00000BvqYGQAZ/view'</msg>
+<arg>${envname}</arg>
+<status status="PASS" start="2025-09-24T16:58:54.502781" elapsed="4.036732"/>
+</kw>
+<kw name="Close Browser Session" owner="Common" type="TEARDOWN">
+<kw name="Capture Screenshot Failure" owner="BrowserUtilLibrary">
+<doc>Capture screenshot in root/screenshots if test failed.</doc>
+<status status="PASS" start="2025-09-24T16:58:58.541799" elapsed="0.000481"/>
+</kw>
+<kw name="Close All Browsers" owner="BrowserUtilLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-09-24T16:58:58.542588" elapsed="2.692493"/>
+</kw>
+<status status="PASS" start="2025-09-24T16:58:58.541181" elapsed="2.694540"/>
+</kw>
+<doc>This is a e2e Lead to Opportunity conversion test</doc>
+<tag>e2elead</tag>
+<tag>regression</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2025-09-24T16:58:02.417603" elapsed="58.818529"/>
+</test>
+<status status="PASS" start="2025-09-24T16:57:58.625202" elapsed="62.618531"/>
+</suite>
+<status status="PASS" start="2025-09-24T16:57:58.597560" elapsed="62.656561"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">e2elead</stat>
+<stat pass="1" fail="0" skip="0">regression</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="E2ELeadOpportunityTest" id="s1-s1" pass="1" fail="0" skip="0">Tests.E2ELeadOpportunityTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

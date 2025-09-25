@@ -1,0 +1,20 @@
+--test Tests.LoginTest.Invalid Login Test
+--variable browser:chrome
+--variable headless:false
+--variable envname:QA
+--variable islambda:false
+--variable CALLER_ID:8146a25c84b8469ba8008e7ea6228bf1
+--variable PABOTLIBURI:127.0.0.1:8270
+--variable PABOTEXECUTIONPOOLID:0
+--variable PABOTISLASTEXECUTIONINPOOL:0
+--variable PABOTNUMBEROFPROCESSES:8
+--variable PABOTQUEUEINDEX:2
+--variable PABOTLASTLEVEL:
+--listener allure_robotframework
+--log NONE
+--report NONE
+--xunit NONE
+--outputdir .\pabot_results\2
+--consolecolors off
+--consolemarkers off
+Tests/

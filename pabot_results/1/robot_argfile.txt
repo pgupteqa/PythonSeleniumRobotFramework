@@ -1,0 +1,20 @@
+--test Tests.LoginTest.Valid Login Test
+--variable browser:chrome
+--variable headless:false
+--variable envname:QA
+--variable islambda:false
+--variable CALLER_ID:7da95232ecb948259f270e5f4ad92228
+--variable PABOTLIBURI:127.0.0.1:8270
+--variable PABOTEXECUTIONPOOLID:1
+--variable PABOTISLASTEXECUTIONINPOOL:1
+--variable PABOTNUMBEROFPROCESSES:8
+--variable PABOTQUEUEINDEX:1
+--variable PABOTLASTLEVEL:Tests.LoginTest.Valid Login Test
+--listener allure_robotframework
+--log NONE
+--report NONE
+--xunit NONE
+--outputdir .\pabot_results\1
+--consolecolors off
+--consolemarkers off
+Tests/

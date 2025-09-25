@@ -1,0 +1,20 @@
+--test Tests.E2ELeadOpportunityTest.E2E Lead To Opportunity Flow
+--variable browser:chrome
+--variable headless:false
+--variable envname:QA
+--variable islambda:false
+--variable CALLER_ID:2136ca6417094505a4b432848dbf1f64
+--variable PABOTLIBURI:127.0.0.1:8270
+--variable PABOTEXECUTIONPOOLID:2
+--variable PABOTISLASTEXECUTIONINPOOL:0
+--variable PABOTNUMBEROFPROCESSES:8
+--variable PABOTQUEUEINDEX:0
+--variable PABOTLASTLEVEL:Tests.E2ELeadOpportunityTest
+--listener allure_robotframework
+--log NONE
+--report NONE
+--xunit NONE
+--outputdir .\pabot_results\0
+--consolecolors off
+--consolemarkers off
+Tests/

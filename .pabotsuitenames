@@ -1,0 +1,7 @@
+datasources:b78d1adbc49b8972381cda87c007b1b3e0f5f28e
+commandlineoptions:23124f4448c57af5ea4f1b608c4c0f2014095f51
+suitesfrom:no-suites-from-option
+file:6fcda785dc0ce44e7106722b84688480b32a7bed
+--test Tests.E2ELeadOpportunityTest.E2E Lead To Opportunity Flow
+--test Tests.LoginTest.Valid Login Test
+--test Tests.LoginTest.Invalid Login Test

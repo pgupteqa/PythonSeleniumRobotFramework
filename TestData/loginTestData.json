@@ -1,0 +1,12 @@
+{
+  "valid_login":
+    {
+      "username": "pgbitbucket706@agentforce.com",
+      "password": "Pra2892pte#"
+    },
+
+  "invalid_login": {
+    "username": "pgbitbucket7799@agentforce.com",
+    "password": "Pra445pte$"
+  }
+}

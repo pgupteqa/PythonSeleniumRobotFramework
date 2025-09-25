@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-09-24T16:57:58.437736" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="D:\Udmey\Python-Workspace\RobotFrameworkTutorial\RobotFrameworkSeleniumPython\Tests">
+<suite id="s1-s1" name="LoginTest" source="D:\Udmey\Python-Workspace\RobotFrameworkTutorial\RobotFrameworkSeleniumPython\Tests\LoginTest.robot">
+<test id="s1-s1-t1" name="Invalid Login Test" line="16">
+<kw name="Run Keywords" owner="BuiltIn" type="SETUP">
+<kw name="Open SF Login Page" owner="Common">
+<kw name="Open Browser With Options" owner="BrowserUtilLibrary">
+<msg time="2025-09-24T16:58:06.540423" level="INFO">Opening url 'https://orgfarm-6e06e8de9e-dev-ed.develop.my.salesforce.com/'</msg>
+<arg>${Browser}</arg>
+<arg>${headless}</arg>
+<arg>${envname}</arg>
+<arg>${islambda}</arg>
+<status status="PASS" start="2025-09-24T16:58:02.421991" elapsed="7.357191"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="BrowserUtilLibrary">
+<arg>20s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-09-24T16:58:09.782351" elapsed="0.035094"/>
+</kw>
+<kw name="Set Selenium Page Load Timeout" owner="BrowserUtilLibrary">
+<arg>20s</arg>
+<doc>Sets the page load timeout value used by Selenium.</doc>
+<status status="PASS" start="2025-09-24T16:58:09.818453" elapsed="0.029646"/>
+</kw>
+<status status="PASS" start="2025-09-24T16:58:02.421402" elapsed="7.427483"/>
+</kw>
+<kw name="Setup Login Test Data" owner="Common">
+<kw name="Get Data From Json" owner="CommonUtilLibrary">
+<msg time="2025-09-24T16:58:09.851068" level="INFO">${listuser} = {'username': 'pgbitbucket706@agentforce.com', 'password': 'Pra2892pte#'}</msg>
+<var>${listuser}</var>
+<arg>loginTestData.json</arg>
+<arg>valid_login</arg>
+<status status="PASS" start="2025-09-24T16:58:09.850173" elapsed="0.001038"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-09-24T16:58:09.854558" level="INFO">${validusername} = pgbitbucket706@agentforce.com</msg>
+<arg>${validusername}</arg>
+<arg>${listuser["username"]}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-09-24T16:58:09.852874" elapsed="0.001941"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-09-24T16:58:09.857750" level="INFO">${validpassword} = Pra2892pte#</msg>
+<arg>${validpassword}</arg>
+<arg>${listuser["password"]}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-09-24T16:58:09.856390" elapsed="0.001601"/>
+</kw>
+<kw name="Get Data From Json" owner="CommonUtilLibrary">
+<msg time="2025-09-24T16:58:09.862183" level="INFO">${invalidlistuser} = {'username': 'pgbitbucket7799@agentforce.com', 'password': 'Pra445pte$'}</msg>
+<var>${invalidlistuser}</var>
+<arg>loginTestData.json</arg>
+<arg>invalid_login</arg>
+<status status="PASS" start="2025-09-24T16:58:09.860869" elapsed="0.001396"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-09-24T16:58:09.865304" level="INFO">${invalidusername} = pgbitbucket7799@agentforce.com</msg>
+<arg>${invalidusername}</arg>
+<arg>${invalidlistuser["username"]}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-09-24T16:58:09.864145" elapsed="0.001303"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-09-24T16:58:09.868268" level="INFO">${invalidpassword} = Pra445pte$</msg>
+<arg>${invalidpassword}</arg>
+<arg>${invalidlistuser["password"]}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-09-24T16:58:09.867135" elapsed="0.001297"/>
+</kw>
+<doc>This Keyword is used to setup valid login or invalid login testdata</doc>
+<status status="PASS" start="2025-09-24T16:58:09.849502" elapsed="0.020622"/>
+</kw>
+<arg>Open SF Login Page</arg>
+<arg>Setup Login Test Data</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="PASS" start="2025-09-24T16:58:02.419875" elapsed="7.450589"/>
+</kw>
+<kw name="Login To Salesforce" owner="LoginPage">
+<msg time="2025-09-24T16:58:10.522656" level="INFO">Typing text 'pgbitbucket7799@agentforce.com' into text field 'id=username'.</msg>
+<msg time="2025-09-24T16:58:13.467619" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-09-24T16:58:14.347420" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2025-09-24T16:58:14.897986" level="INFO">Clicking button 'id=Login'.</msg>
+<arg>username=${invalidusername}</arg>
+<arg>password=${invalidpassword}</arg>
+<status status="PASS" start="2025-09-24T16:58:09.870897" elapsed="6.478558"/>
+</kw>
+<kw name="Validate Login Error Message" owner="LoginPage">
+<msg time="2025-09-24T16:58:16.677466" level="INFO">Current page contains element 'id=error'.</msg>
+<arg>Please check your username and password</arg>
+<status status="PASS" start="2025-09-24T16:58:16.352351" elapsed="0.582380"/>
+</kw>
+<kw name="Close Browser Session" owner="Common" type="TEARDOWN">
+<kw name="Capture Screenshot Failure" owner="BrowserUtilLibrary">
+<doc>Capture screenshot in root/screenshots if test failed.</doc>
+<status status="PASS" start="2025-09-24T16:58:16.937400" elapsed="0.000462"/>
+</kw>
+<kw name="Close All Browsers" owner="BrowserUtilLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-09-24T16:58:16.938381" elapsed="4.311011"/>
+</kw>
+<status status="PASS" start="2025-09-24T16:58:16.936822" elapsed="4.313053"/>
+</kw>
+<doc>This is a valid login test</doc>
+<tag>invalidlogin</tag>
+<tag>regression</tag>
+<tag>smoke</tag>
+<tag>test:retry(3)</tag>
+<tag>validlogin</tag>
+<status status="PASS" start="2025-09-24T16:58:02.417609" elapsed="18.832602"/>
+</test>
+<status status="PASS" start="2025-09-24T16:57:58.606547" elapsed="22.648621"/>
+</suite>
+<status status="PASS" start="2025-09-24T16:57:58.579947" elapsed="22.690175"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">invalidlogin</stat>
+<stat pass="1" fail="0" skip="0">regression</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+<stat pass="1" fail="0" skip="0">test:retry(3)</stat>
+<stat pass="1" fail="0" skip="0">validlogin</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="LoginTest" id="s1-s1" pass="1" fail="0" skip="0">Tests.LoginTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

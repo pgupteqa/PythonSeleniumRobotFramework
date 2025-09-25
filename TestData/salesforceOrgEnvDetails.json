@@ -1,0 +1,12 @@
+{
+  "QA":
+    {
+      "org_url": "https://orgfarm-6e06e8de9e-dev-ed.develop.my.salesforce.com/",
+      "lightning_view_url": "https://orgfarm-6e06e8de9e-dev-ed.develop.lightning.force.com/"
+    },
+
+  "DEV":
+    {
+      "url": "https://orgfarm-6e06e8de9e-dev-ed.develop.my.salesforce.com/"
+    }
+}
