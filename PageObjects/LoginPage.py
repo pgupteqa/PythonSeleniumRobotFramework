@@ -63,7 +63,9 @@ class LoginPage(BasePage):
         if env_path.exists():
             print("Found .env file, loading environment variables from file...")
             load_dotenv(dotenv_path=env_path)
+            user_password = os.getenv("PASSWORD")
         else:
             print("No .env file found, using Jenkins environment variables...")
+            user_password = os.environ.get("PASSWORD")
 
-        return os.getenv("PASSWORD")
+        return user_password

@@ -27,6 +27,7 @@ class SalesforceAPIUtils:
                 sf_instance_url = os.getenv("INSTANCE_URL")
                 sf_consumer_key = os.getenv("CONSUMER_KEY")
                 sf_consumer_secret = os.getenv("CONSUMER_SECRET")
+
             else:
                 print("No .env file found, using Jenkins environment variables...")
                 sf_username = os.environ.get("SF_USERNAME")
@@ -34,6 +35,7 @@ class SalesforceAPIUtils:
                 sf_instance_url = os.environ.get("INSTANCE_URL")
                 sf_consumer_key = os.environ.get("CONSUMER_KEY")
                 sf_consumer_secret = os.environ.get("CONSUMER_SECRET")
+
 
             #sf_username = os.getenv("SF_USERNAME")
             #sf_password = os.getenv("PASSWORD")
