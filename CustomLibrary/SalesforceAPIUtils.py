@@ -13,6 +13,7 @@ class SalesforceAPIUtils:
 
     @keyword
     def authenticate_salesforce(self):
+        global sf_username,sf_password,sf_instance_url,sf_consumer_key,sf_consumer_secret
         try:
 
             # Check if .env file exists, if yes load it, otherwise use Jenkins env vars
@@ -21,14 +22,24 @@ class SalesforceAPIUtils:
             if env_path.exists():
                 print("Found .env file, loading environment variables from file...")
                 load_dotenv(dotenv_path=env_path)
+                sf_username = os.getenv("SF_USERNAME")
+                sf_password = os.getenv("PASSWORD")
+                sf_instance_url = os.getenv("INSTANCE_URL")
+                sf_consumer_key = os.getenv("CONSUMER_KEY")
+                sf_consumer_secret = os.getenv("CONSUMER_SECRET")
             else:
                 print("No .env file found, using Jenkins environment variables...")
+                sf_username = os.environ.get("SF_USERNAME")
+                sf_password = os.environ.get("PASSWORD")
+                sf_instance_url = os.environ.get("INSTANCE_URL")
+                sf_consumer_key = os.environ.get("CONSUMER_KEY")
+                sf_consumer_secret = os.environ.get("CONSUMER_SECRET")
 
-            sf_username = os.getenv("SF_USERNAME")
-            sf_password = os.getenv("PASSWORD")
-            sf_instance_url = os.getenv("INSTANCE_URL")
-            sf_consumer_key = os.getenv("CONSUMER_KEY")
-            sf_consumer_secret = os.getenv("CONSUMER_SECRET")
+            #sf_username = os.getenv("SF_USERNAME")
+            #sf_password = os.getenv("PASSWORD")
+            #sf_instance_url = os.getenv("INSTANCE_URL")
+            #sf_consumer_key = os.getenv("CONSUMER_KEY")
+            #sf_consumer_secret = os.getenv("CONSUMER_SECRET")
 
             if not all([sf_username, sf_password, sf_instance_url, sf_consumer_key, sf_consumer_secret]):
                 raise ValueError("Missing Salesforce authentication configuration.")
