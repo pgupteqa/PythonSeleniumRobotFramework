@@ -2,7 +2,8 @@
 *** Settings ***
 Resource    ../Resources/Common.robot
 
-Test Setup    Run Keywords  Open SF Login Page  Setup Lead E2E Test Data
+Suite Setup      Run Keywords    Setup Lead E2E Test Data
+Test Setup       Open SF Login Page
 Test Teardown    Close Browser Session
 Test Tags     smoke   regression  e2elead   test:retry(2)
 
@@ -17,9 +18,10 @@ E2E Lead To Opportunity Flow
     Convert Lead
     Validate Created Contact Record   ${contactleadname}
     Navigate To Contact After Lead Conversion    ${envname}
+    Validate Created Opportunity    Prospecting
 
 *** Keywords ***
 Create Lead Record and Get Lead Lastname
     ${contactleadname}  Create new lead record    ${leadrecorddata}
-    Set suite variable    ${contactleadname}
+    Set test variable    ${contactleadname}
 

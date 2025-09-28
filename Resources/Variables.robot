@@ -1,14 +1,15 @@
 
 *** Variables ***
-${Browser}
-${headless}
-${envname}
-${islambda}
+#${Browser}
+#${headless}
+#${envname}
+#${islambda}
 
-${validusername}
-${validpassword}
-${invalidusername}
-${invalidpassword}
-${leadrecorddata}
-${contactleadname}
-${expected_contactname}
+#${validusername}
+#${validpassword}
+#${invalidusername}
+#${invalidpassword}
+#${leadrecorddata}
+#${contactleadname}
+#${expected_contactname}
+#${CREATED_LEAD_LASTNAME}

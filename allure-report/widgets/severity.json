@@ -1,1 +1,1 @@
-[{"uid":"4e4e7be83e76c832","name":"E2E Lead To Opportunity Flow","time":{"start":1758819775694,"stop":1758819815049,"duration":39355},"status":"passed","severity":"normal"}]
+[{"uid":"e0b1063e05de953d","name":"Validate Invalid Login","time":{"start":1758972718244,"stop":1758972742276,"duration":24032},"status":"passed","severity":"normal"},{"uid":"acc5b3e13dd291bc","name":"Validate Valid Login","time":{"start":1758972718244,"stop":1758972755669,"duration":37425},"status":"passed","severity":"normal"}]

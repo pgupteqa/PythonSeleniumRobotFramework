@@ -1,18 +1,21 @@
 *** Settings ***
 Resource    ../Resources/Common.robot
 
-Test Setup    Run Keywords  Open SF Login Page  Setup Login Test Data
+Suite Setup      Run Keywords   Setup Login Test Data
+Test Setup       Open SF Login Page
 Test Teardown    Close Browser Session
-Test Tags       smoke   regression  validlogin  test:retry(2)
+Test Tags       smoke   regression  logintest  test:retry(2)
 
 *** Test Cases ***
-Valid Login Test
+Validate Valid Login
     [Documentation]     This is a valid login test
+    [Tags]      validlogin
     Login to salesforce     username=${validusername}     password=${validpassword}
     Validate app launcher icon
     Validate lead record by lastname    FSLeadQA
 
-Invalid Login Test
-    [Documentation]     This is a valid login test
+Validate Invalid Login
+    [Documentation]     This is a invalid login test
+    [Tags]      invalidlogin
     Login to salesforce     username=${invalidusername}     password=${invalidpassword}
     Validate login error message    Please check your username and password

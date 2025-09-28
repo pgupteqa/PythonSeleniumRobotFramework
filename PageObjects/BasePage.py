@@ -1,8 +1,12 @@
 import random
 import string
+from pathlib import Path
 
+from dotenv import load_dotenv
 from robot.api.deco import library
 from robot.libraries.BuiltIn import BuiltIn
+from selenium.common import NoSuchElementException
+
 
 @library
 class BasePage:
@@ -58,3 +62,9 @@ class BasePage:
 
     def wait_for_visibility_of_element(self, locator):
         self.selenium.wait_until_element_is_visible(locator,timeout='20s')
+
+
+    def enter_text_field(self, locator, value):
+        """Helper method to enter text in form fields"""
+        self.wait_for_visibility_of_element(locator)
+        self.selenium.input_text(locator, value)

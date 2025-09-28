@@ -1,4 +1,5 @@
 from robot.api.deco import library, keyword
+from robot.libraries.BuiltIn import BuiltIn
 
 from BasePage import BasePage
 
@@ -31,14 +32,24 @@ class LeadsPage(BasePage):
         lead_url = orgbaseurl + f"lightning/o/Lead/list?filterName=__Recent"
         self.selenium.go_to(lead_url)
         self.wait_for_visibility_of_element(self.NEW_LEAD_BUTTON_LOCATOR)
-        #self.selenium.wait_until_element_is_visible(self.NEW_LEAD_BUTTON_LOCATOR)
         title = self.selenium.get_title()
         assert "Leads" in title
 
     @keyword
     def create_new_lead_record(self, lead_data_json):
-        self.selenium.click_element(self.NEW_LEAD_BUTTON_LOCATOR)
 
+        self._click_new_lead_button()
+        self._fill_new_lead_data(lead_data_json)
+        self._click_save_button()
+        return self._get_generated_lastname()
+
+    '''private helpers methods for lead creation'''
+    def _click_new_lead_button(self):
+        self.selenium.click_element(self.NEW_LEAD_BUTTON_LOCATOR)
+        self.wait_for_visibility_of_element(self.LEAD_SALUTATION)
+
+    '''add new lead private helper method to add mandatory data'''
+    def _fill_new_lead_data(self,lead_data_json):
         self.wait_for_visibility_of_element(self.LEAD_SALUTATION)
         self.selenium.click_element(self.LEAD_SALUTATION)
 
@@ -46,22 +57,28 @@ class LeadsPage(BasePage):
         self.select_option_from_picklist(self.LEAD_SALUTATION_PICKIST, "Mr.")
 
         self.wait_for_visibility_of_element(self.LEAD_FIRSTNAME_LOCATOR)
-        self.selenium.input_text(self.LEAD_FIRSTNAME_LOCATOR,lead_data_json["firstname"])
+        self.selenium.input_text(self.LEAD_FIRSTNAME_LOCATOR, lead_data_json["firstname"])
 
         self.wait_for_visibility_of_element(self.LEAD_LASTNAME_LOCATOR)
-        self.get_random_lastname = self.random_string()
-        self.selenium.input_text(self.LEAD_LASTNAME_LOCATOR, self.get_random_lastname)
+        self.generated_lastname = self.random_string()
+        self.selenium.input_text(self.LEAD_LASTNAME_LOCATOR, self.generated_lastname)
 
         self.wait_for_visibility_of_element(self.LEAD_COMPANY_NAME_LOCATOR)
         self.get_account_name = lead_data_json["company"] + self.random_string()
         self.selenium.input_text(self.LEAD_COMPANY_NAME_LOCATOR, self.get_account_name)
 
         self.wait_for_visibility_of_element(self.LEAD_EMAIL_LOCATOR)
-        self.getlead_email = "testautomation"+self.get_random_lastname+"@mailinator.com"
+        self.getlead_email = "testautomation" + self.generated_lastname + "@mailinator.com"
         self.selenium.input_text(self.LEAD_EMAIL_LOCATOR, self.getlead_email)
 
+    def _click_save_button(self):
         self.selenium.click_element(self.SAVE_BUTTON)
-        return self.get_random_lastname
+
+    def _get_generated_lastname(self):
+        """Return the generated lastname for use in subsequent tests"""
+        return getattr(self, 'generated_lastname', None)
+
+
 
     @keyword
     def validate_lead_status_should_be(self, status):
@@ -94,6 +111,29 @@ class LeadsPage(BasePage):
             self.contact_email = data["Email"]
 
         assert lastname in self.contactnameval
+
+    @keyword
+    def validate_created_account(self):
+        fields = ["Id", "Name"]
+        contactdetails = self.sf_authenticate.get_account_record(self.contactid, fields)
+        for data in contactdetails:
+            self.accountname = data["Name"]
+            self.accountId = data["Id"]
+
+        #assert self.get_account_name ==  self.accountname
+        BuiltIn().should_be_equal(self.get_account_name,self.accountname)
+
+    @keyword
+    def validate_created_opportunity(self,stageval):
+        fields = ["Id", "Name", "StageName"]
+        contactdetails = self.sf_authenticate.get_opportunity_record(self.contactid, fields)
+        for data in contactdetails:
+            self.opp_name = data["Name"]
+            self.opp_Id = data["Id"]
+            self.opp_stage = data["StageName"]
+
+        # assert self.get_account_name ==  self.accountname
+        BuiltIn().should_be_equal(stageval, self.opp_stage)
 
     @keyword
     def navigate_to_contact_after_lead_conversion(self, envname):

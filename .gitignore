@@ -1,2 +1,8 @@
 /screenshots
 .env
+.mp4
+/.idea
+/allure-report
+/allure-results
+/output
+/pabot_reults

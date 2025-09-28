@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from pathlib import Path
 
 import allure
 from SeleniumLibrary import SeleniumLibrary
@@ -13,8 +14,6 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.edge.options import Options as EdgeOptions
 from selenium.webdriver.remote.client_config import ClientConfig
 
-load_dotenv()
-
 
 @library
 class BrowserUtilLibrary(SeleniumLibrary):
@@ -25,6 +24,14 @@ class BrowserUtilLibrary(SeleniumLibrary):
         global driver
         if str(islambda).lower() == "true":
             # Build LambdaTest remote URL from environment variables
+            project_root = Path(__file__).resolve().parents[1]
+            env_path = project_root / ".env"
+            if env_path.exists():
+                print("Found .env file, loading environment variables from file...")
+                load_dotenv(dotenv_path=env_path)
+            else:
+                print("No .env file found, using Jenkins environment variables...")
+
             lt_username = os.getenv('LT_USERNAME')
             lt_access_key = os.getenv('LT_ACCESS_KEY')
 

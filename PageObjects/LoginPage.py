@@ -1,7 +1,8 @@
+import os
+from pathlib import Path
 
+from dotenv import load_dotenv
 from robot.api.deco import library, keyword
-from robot.libraries.BuiltIn import BuiltIn
-
 from BasePage import BasePage
 
 
@@ -54,3 +55,15 @@ class LoginPage(BasePage):
 
         print(f"this is record DETAIL:{self.leadnameval}")
         assert lstname in self.leadnameval
+
+    @keyword
+    def get_password_from_env_val(self):
+        project_root = Path(__file__).resolve().parents[1]
+        env_path = project_root / ".env"
+        if env_path.exists():
+            print("Found .env file, loading environment variables from file...")
+            load_dotenv(dotenv_path=env_path)
+        else:
+            print("No .env file found, using Jenkins environment variables...")
+
+        return os.getenv("PASSWORD")

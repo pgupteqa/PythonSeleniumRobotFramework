@@ -1,7 +1,6 @@
-datasources:b78d1adbc49b8972381cda87c007b1b3e0f5f28e
-commandlineoptions:23124f4448c57af5ea4f1b608c4c0f2014095f51
+datasources:6e2d4d9c79e5426732b78966af5361ece23782d2
+commandlineoptions:b9a3c21bce87dafdabd1316ccc035037e6535337
 suitesfrom:no-suites-from-option
-file:6fcda785dc0ce44e7106722b84688480b32a7bed
---test Tests.E2ELeadOpportunityTest.E2E Lead To Opportunity Flow
---test Tests.LoginTest.Valid Login Test
---test Tests.LoginTest.Invalid Login Test
+file:a2c64fd8d54275bf7c866f77b8de8953e0ce3904
+--test Tests.LoginTest.Validate Valid Login
+--test Tests.LoginTest.Validate Invalid Login
